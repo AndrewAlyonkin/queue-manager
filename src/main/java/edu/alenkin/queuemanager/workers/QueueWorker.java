@@ -7,8 +7,6 @@ import edu.alenkin.queuemanager.notesservices.NotesService;
 import edu.alenkin.queuemanager.parsers.MessageParser;
 import edu.alenkin.queuemanager.queuemanagers.QueueManager;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -40,7 +38,7 @@ public class QueueWorker {
     public void checkQueues() {
         log.info("Check queues");
         var queuesMessages = getMessagesFromQueues(queueManager.getTrackedQueueUrls());
-        parseMessages(queuesMessages).forEach(notesService::save);
+        parseMessages(queuesMessages).stream().peek(System.out::println).forEach(notesService::save);
     }
 
     private List<Message> getMessagesFromQueues(List<String> trackedQueues) {
@@ -57,5 +55,4 @@ public class QueueWorker {
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList());
     }
-
 }

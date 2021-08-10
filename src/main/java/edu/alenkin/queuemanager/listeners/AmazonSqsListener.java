@@ -35,6 +35,8 @@ public class AmazonSqsListener implements QueueListener {
                 .withCredentials(new AWSStaticCredentialsProvider(credentials))
                 .withRegion(region)
                 .build();
+
+        
     }
 
     @Override

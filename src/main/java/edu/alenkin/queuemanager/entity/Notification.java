@@ -40,6 +40,17 @@ public class Notification {
 
     public Notification() {
     }
+
+    @Override
+    public String toString() {
+        return "Notification{" +
+                "id='" + id + '\'' +
+                ", deployment_id='" + deployment_id + '\'' +
+                ", status='" + status + '\'' +
+                ", created=" + created +
+                ", updated=" + updated +
+                '}';
+    }
 }
 
 

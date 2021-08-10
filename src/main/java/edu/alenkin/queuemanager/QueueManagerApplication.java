@@ -23,7 +23,6 @@ public class QueueManagerApplication {
     public void startCheckQueues() {
         worker.checkQueues();
     }
-
 }
 
 @Configuration
